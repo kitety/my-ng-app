@@ -22,7 +22,7 @@ export class ServersComponent implements OnInit {
   constructor() {
     setTimeout(() => {
       this.notAllNewServers = false;
-    }, 2000)
+    }, 200)
   }
 
   ngOnInit(): void {
@@ -35,6 +35,10 @@ export class ServersComponent implements OnInit {
     // this.serverName = ''
     this.serverCreated = true
 
+  }
+
+  serverClick(e) {
+    console.log({e})
   }
 
   //

@@ -1,4 +1,5 @@
 <p [ngStyle]="{background:getColor()}"
    [ngClass]="{online:serverStatus === 'online'}"
+   (click)="onServerClick()"
 >Server with ID {{serverId}} is {{serverStatus}}
   ,{{getServerStatus()}}</p>

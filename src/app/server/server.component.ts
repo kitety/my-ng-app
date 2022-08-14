@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 
 @Component({
   selector: 'app-server',
@@ -9,11 +9,18 @@ import {Component} from "@angular/core";
     }
   `]
 })
-export class ServerComponent {
+
+export class ServerComponent implements OnInit {
+  @Output() serverClick = new EventEmitter<{ name: string }>();
+  @Input('srvElement') element: string
+
   serverId = 10
   serverStatus = 'running'
+  private server: string;
 
-  constructor() {
+
+  ngOnInit() {
+    console.log('server', this.element)
     this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline'
   }
 
@@ -23,6 +30,10 @@ export class ServerComponent {
 
   getColor(): string {
     return this.serverStatus === 'online' ? 'green' : 'red'
+  }
+
+  onServerClick() {
+    this.serverClick.emit({name: this.element})
   }
 
 }
